@@ -1,0 +1,114 @@
+import sys
+class Product:
+    def _init_(self,product_ID,name,price,manufacturer,Weight,expiration_date,year,supermarket_name ="The Market"):
+        self.s= supermarket_name
+        self.__id= product_ID
+        self.n= name
+        self.p= price
+        self.m= manufacturer
+        self.w= Weight
+        self.e= expiration_date
+        self.y= year
+    def Add_new(self,new_product):
+         self.np=new_product
+    def Display(self):
+         print( f"Product name: {self.n}, Its Price: {self.p}, manufacturer: {self.m}, Its weight: {self.w}, Its expiration date: {self.e}, Year of production: {self.y}")
+    def Change(self):
+         while True:
+            ch=input("Do you want to change your product ID !??")
+            if ch=="yes" :
+                int(input("Please enter new ID: "))
+                break
+            elif ch=="No":
+                print("Thank you !!")
+                break
+    def exit(self):
+        sys.exit()
+    def choose(self):
+        option = int(input("""
+                Enter 1. to add new product 
+                      2. show details 
+                      3. to edit ID  
+                      4. Exit
+                      """))
+        if option == 1:
+            np = input("please enter the name of new product: ")
+            print(self.Add_new(np))
+        elif option == 2:
+            self.Display()
+        elif option == 3:
+            self.Change()
+        elif option==4:
+            self.exit()
+        else:
+            print("Error: Enter 1, 2 or 3 only!\n")
+
+class Healthy(Product):
+    def _init_(self,calories,components,product_ID,name,price,manufacturer,Weight,expiration_date,year):
+        self.ca=calories
+        self.com=components
+        super()._init_(self,product_ID,name,price,manufacturer,Weight,expiration_date,year)
+    def Add_new_HP(self,new_healthyP):
+        self.nhp=new_healthyP
+    def Display_HP(self):
+        print( f"Healthy product name: {self.nhp}, Its Price: {self.p}, manufacturer: {self.m}, Its weight: {self.w}, Its expiration date: {self.e}, Year of production: {self.y}")
+    def change_HP(self):
+        while True:
+            ch = input("Do you want to change your product ID !??")
+            if ch == "yes":
+                int(input("Please enter new ID: "))
+                break
+            elif ch == "no":
+                print("Thank you !!")
+    def Check(self):
+        print( f"Product calories: {self.ca}, and its components: {self.com}")
+    def Total_calories(self,total):
+        self.t=total
+        self.t= self.ca * self.m
+        print(self.t)
+    def exit(self):
+        sys.exit()
+    def choose(self):
+        while True:
+            option = int(input("""
+                 Enter 1. to add new product 
+                       2. show details 
+                       3. to edit ID  
+                       4. to check calories and components
+                       5. total calories 
+                       6. Exit
+                       """))
+            if option == 1:
+                nhp = input("Please enter name of new product: ")
+                print(self.Add_new_HP(nhp))
+            elif option == 2:
+                self.Display()
+            elif option == 3:
+                self.Change()
+            elif option == 4:
+                self.Check()
+            elif option == 5:
+                w = float(input("PLease Enter the weight: "))
+                print(self.Total_calories(w, ))
+            elif option==6:
+                self.exit()
+            else:
+                print("Error: Enter 1, 2, 3, 4, or 5 only!\n")
+
+
+print("**WELCOME TO SUPERMARKET THE MARKET**")
+print("_____________________\n")
+
+pr=Product(233131,"DODZ",40,"ELsimba",0,"20/8/24",2023)
+healthy_pr=Healthy(408,"oats-milk-jam-whey_protein",23424,"gogz",300,"Elbimba",0,"20/8/24",2023)
+while True:
+    ch=input("""
+        Choose 1.Product  
+               2.Healthy Product 
+               """)
+    if ch=='1':
+        pr.choose()
+    elif ch=='2':
+        healthy_pr.choose()
+    else:
+        print("Wrong command! Enter '1' for Product and '2' for Healthy product.\n ")
