@@ -41,7 +41,7 @@ class Product:
         elif option==4:
             self.exit()
         else:
-            print("Error: Enter 1, 2 or 3 only!\n")
+            print("Error: Enter 1, 2 ,3 or 4 only!\n")
 
 class Healthy(Product):
     def _init_(self,calories,components,product_ID,name,price,manufacturer,Weight,expiration_date,year):
@@ -93,7 +93,7 @@ class Healthy(Product):
             elif option==6:
                 self.exit()
             else:
-                print("Error: Enter 1, 2, 3, 4, or 5 only!\n")
+                print("Error: Enter 1, 2, 3, 4, 5 or 6 only!\n")
 
 
 print("**WELCOME TO SUPERMARKET THE MARKET**")
