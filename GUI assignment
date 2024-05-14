@@ -1,0 +1,73 @@
+from tkinter import *
+from tkinter import messagebox
+
+w=Tk()
+w.title(string="Bank Misr")
+w.geometry('900x600')
+w.config(bg='#60a8d3')
+def job():
+    job=E1.get()
+    output_text = job
+    output_label.config(text=output_text)
+def details():
+    try:
+        loan = float(E2.get())
+        years =int(E4.get())
+        if years == 1:
+            fixed_int = 13.76/100
+        elif years == 3:
+            fixed_int = 14.06/100
+        elif years == 5:
+            fixed_int = 14.87/100
+        elif years ==7:
+            fixed_int = 15.71/100
+
+        interest_year = loan * fixed_int
+        total_interest = interest_year * years
+        total_loans = loan + total_interest
+        pay_per_month = total_loans / (years * 12)
+        output_text = f"Interest in 1 year = {interest_year:.2f}\n" f"Total interest = {total_interest:.2f}\n" f"Total loans = {total_loans:.2f}\n" f"Pay/month = {pay_per_month:.2f}"
+        output_label.config(text=output_text)
+    except:
+        messagebox.showerror("Input error", "Please enter valid numeric values for loan amount and years")
+
+def clear():
+    E1.delete(0, 'end')
+    E2.delete(0, 'end')
+    E4.delete(0, 'end')
+    output_label.config(text='')
+def exit():
+    w.quit()
+frame1 = Frame(w, bg='#60a8d3')
+frame1.pack(side = LEFT)
+frame2 = Frame(w,bg='#60a8d3')
+frame2.pack( side = RIGHT )
+frame3 = Frame(w,bg='#60a8d3')
+frame3.pack( side = BOTTOM )
+frame4 = Frame(w,bg='#60a8d3')
+frame4.pack( side = BOTTOM )
+logo = PhotoImage(file="BankMisr.png")
+L= Label(w, text="Welcome", image=logo)
+L.pack()
+L1 = Label(frame1, text="Enter your job",bg='light blue')
+L1.pack()
+E1 = Entry(frame1,bg='#c8c8c8')
+E1.pack(pady=(10,10))
+L2 = Label(frame2, text="Enter loan amount", bg='light blue')
+L2.pack()
+E2 = Entry(frame2,bg='#c8c8c8')
+E2.pack(pady=(10,10))
+L4 = Label(frame2, text="Choose loan years (1 year - 3 years - 5 years - 7 years): ", bg='light blue')
+L4.pack()
+E4 = Entry(frame2, bg='#c8c8c8')
+E4.pack(pady=(10,10))
+B1=Button(frame2,text="Submit", command=details, bg='#dee2e6')
+B1.pack()
+B2=Button(frame4, text="Clear", command=clear, bg='#dee2e6', padx=10)
+B2.pack(pady=(10,10))
+B3=Button(frame4, text="Exit", command=exit, bg='#dee2e6', padx=10)
+B3.pack()
+
+output_label = Label(frame3,bg='#60a8d3' , font=30, pady=20)
+output_label.pack()
+w.mainloop()
