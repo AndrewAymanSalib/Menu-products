@@ -15,7 +15,7 @@ class Product:
          print( f"Product name: {self.n}, Its Price: {self.p}, manufacturer: {self.m}, Its weight: {self.w}, Its expiration date: {self.e}, Year of production: {self.y}")
     def Change(self):
          while True:
-            ch=input("Do you want to change your product ID !??")
+            ch=input("Do you want to change your product ID !?? yes/No")
             if ch=="yes" :
                 int(input("Please enter new ID: "))
                 break
@@ -54,7 +54,7 @@ class Healthy(Product):
         print( f"Healthy product name: {self.nhp}, Its Price: {self.p}, manufacturer: {self.m}, Its weight: {self.w}, Its expiration date: {self.e}, Year of production: {self.y}")
     def change_HP(self):
         while True:
-            ch = input("Do you want to change your product ID !??")
+            ch = input("Do you want to change your product ID !?? yes/No")
             if ch == "yes":
                 int(input("Please enter new ID: "))
                 break
